@@ -33,3 +33,39 @@ if (menuButton && navigation) {
     }
   });
 }
+
+
+const evidenceLinks = document.querySelectorAll('.case-page a[href^="case-study-evidence/"]');
+if (evidenceLinks.length && typeof HTMLDialogElement !== 'undefined') {
+  const viewer = document.createElement('dialog');
+  viewer.className = 'image-viewer';
+  viewer.setAttribute('aria-label', 'Enlarged case study image');
+  viewer.innerHTML = '<div class="image-viewer-header"><span>Case study image</span><button type="button" class="image-viewer-close" aria-label="Close image">Close</button></div><div class="image-viewer-content"></div><p class="image-viewer-hint">Scroll to see the full image</p>';
+  document.body.appendChild(viewer);
+  const content = viewer.querySelector('.image-viewer-content');
+  const closeButton = viewer.querySelector('.image-viewer-close');
+  let opener;
+
+  evidenceLinks.forEach(link => link.addEventListener('click', event => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const image = link.querySelector('img');
+    if (!image) return;
+    event.preventDefault();
+    opener = link;
+    const frame = link.querySelector('.result-frame');
+    const enlarged = (frame || image).cloneNode(true);
+    const enlargedImage = enlarged.matches('img') ? enlarged : enlarged.querySelector('img');
+    enlargedImage.loading = 'eager';
+    content.replaceChildren(enlarged);
+    viewer.showModal();
+    closeButton.focus();
+  }));
+  closeButton.addEventListener('click', () => viewer.close());
+  viewer.addEventListener('click', event => {
+    if (event.target === viewer) viewer.close();
+  });
+  viewer.addEventListener('close', () => {
+    content.replaceChildren();
+    if (opener) opener.focus();
+  });
+}
