@@ -1,6 +1,6 @@
 const buttons = document.querySelectorAll('.theme-toggle');
-let dark = false;
-try { dark = localStorage.getItem('theme') === 'dark'; } catch (error) { /* Use the default theme. */ }
+let dark = true;
+try { dark = localStorage.getItem('theme') !== 'light'; } catch (error) { /* Use the default theme. */ }
 function applyTheme() {
   document.documentElement.dataset.theme = dark ? 'dark' : 'light';
   buttons.forEach(button => {
