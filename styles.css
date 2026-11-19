@@ -752,13 +752,13 @@ footer a,footer span { font-size:13px; }
 .case-page a.button { color:#111621; background:var(--accent); text-decoration:none; }
 .case-page a.button:hover { color:#111621; background:#d8f154; }
 /* Compact client logos */
-.logo-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px; align-items:stretch; }
+.logo-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; align-items:stretch; }
 .logo-grid a { width:100%; min-width:0; max-width:none; min-height:88px; padding:14px; background:#10121e; border:1px solid #282b3a; box-shadow:none; color:#f5f6fc; }
 .logo-grid img { max-width:100%; max-height:46px; }
 .logo-grid a:first-child img { background:#fff; border-radius:4px; padding:4px; }
 .logo-grid a:focus-visible { outline:3px solid #8265db; outline-offset:3px; }
-@media(max-width:800px) { .logo-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
-@media(max-width:480px) { .logo-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; } .logo-grid a { width:100%; min-height:76px; } .logo-grid img { max-width:100%; } .logo-grid a:last-child { grid-column:1 / -1; width:calc(50% - 5px); justify-self:center; } }
+@media(max-width:800px) { .logo-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:480px) { .logo-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; } .logo-grid a { width:100%; min-height:76px; } .logo-grid img { max-width:100%; } }
 .hero h1 .hero-brand-icon { width:.55em; height:.55em; object-fit:contain; vertical-align:-.03em; margin-right:.16em; }
 :root[data-theme="dark"] .hero h1 .openai-icon { filter:invert(1); }
 /* Case study card summaries */
